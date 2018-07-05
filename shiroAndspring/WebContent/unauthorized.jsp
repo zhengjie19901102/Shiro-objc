@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>UNAUTHORIZED JSP</h1>
+	<h1>没有权限页面</h1>
 </body>
 </html>

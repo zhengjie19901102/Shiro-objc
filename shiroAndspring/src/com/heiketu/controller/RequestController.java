@@ -1,17 +1,26 @@
 package com.heiketu.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.heiketu.service.TestService;
 
 @Controller
 @RequestMapping("/shiroRequest")
 public class RequestController {
 
+	@Autowired
+	private TestService serviceTest;
+	
+	
 	@RequestMapping("/login")
 	public String login(String username, String password) {
 		Subject currentUser = SecurityUtils.getSubject();
@@ -45,5 +54,22 @@ public class RequestController {
 		SimpleHash simpleHash2 = new SimpleHash("MD5", "123456", salt, 0);
 		System.out.println(simpleHash2);
 	}
+	
+	
+	
+	/**
+	 * 测试Shiro的Session
+	 */
+	@RequestMapping(value="/sessionTest")
+	public String sessionTest(HttpSession session) {
+		
+		session.setAttribute("key", "value");
+		
+		serviceTest.testService();
+		
+		
+		return null;
+	}
+	
 	
 }

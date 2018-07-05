@@ -8,6 +8,9 @@
 </head>
 <body>
 	<h1>SUCCESS JSP</h1>
+	
+	<a href="shiroRequest/sessionTest">Test Session</a>
+	
 	<a href="shiro/logout">Lout</a>
 </body>
 </html>
